@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  div.container
+      h1= title
+      p Welcome to #{title}
+      ul.nav
+        li
+            a(href="/submit") Submit a video!
+        li
+            a(href="/viewsub") View the Submissions
+        li
+            a(href="/winner") See who won!

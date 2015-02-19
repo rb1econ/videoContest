@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #{title}
+  each val in aSubmission
+    p= val.subName
+        ul
+            li= val.youtubeVideo
+            li= val.title
+            li= val.describe
