@@ -2,41 +2,38 @@ extends layout
 
 block content
   div.container
+    h1 Do U Yoo-T00B?
     nav.navbar.navbar-default
-          .container-fluid
-            // Brand and toggle get grouped for better mobile display
-            .navbar-header
-              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-              a.navbar-brand(href='/') Yoo-T00B?
-            // Collect the nav links, forms, and other content for toggling
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-              ul.nav.navbar-nav
-                li
-                  a(href='/submit') Submit a Video
-                li
-                  a(href='/viewsub') View Submissions
-                li
-                  a(href='/winner') See the Winner
-      h1 Do U Yoo-T00B?
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Yoo-T00B?
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/submit') Submit a Video
+            li
+              a(href='/viewsub') View Submissions
+            li
+              a(href='/winner') See the Winner
     p Welcome! Do you Yoo-T00B?!?! If so, please <a href="/submit">submit it</a> for a chance to win!
-      //- button.btn.btn-primary.btn-lg(type='button', data-toggle='modal', data-target='#myModal')
-      //-   | Launch demo modal
-      // Modal
-      #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
-        .modal-dialog
-          .modal-content
-            .modal-header
-              button.close(type='button', data-dismiss='modal', aria-label='Close')
-                span(aria-hidden='true') ×
-              h4#myModalLabel.modal-title Modal title
-            .modal-body
-              | ...
-            .modal-footer
-              button.btn.btn-default(type='button', data-dismiss='modal') Close
-              button.btn.btn-primary(type='button') Save changes
+  #myModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='myModalLabel', aria-hidden='true')
+    .modal-dialog
+      .modal-content
+        .modal-header
+          button.close(type='button', data-dismiss='modal', aria-label='Close')
+            span(aria-hidden='true') ×
+          h4#myModalLabel.modal-title Yoo-T00B!!!
+        .modal-body
+          | Welcome to 'Do U Yoo-T00B!' If you have Yoo-T00B'd recently, enter for a chance to win!
+        .modal-footer
+          button.btn.btn-default(type='button', data-dismiss='modal') Close
+          a.btn.btn-primary(href="/submit", type='button') Submit a Vid!
   //- script(type="text/javascript").
   //-   var subArray = !{JSON.stringify(aSubmission)}

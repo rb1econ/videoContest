@@ -1,39 +1,43 @@
 extends layout
 
 block content
-  div.container
+  
     nav.navbar.navbar-default
-          .container-fluid
-            // Brand and toggle get grouped for better mobile display
-            .navbar-header
-              button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
-                span.sr-only Toggle navigation
-                span.icon-bar
-                span.icon-bar
-                span.icon-bar
-              a.navbar-brand(href='/') Yoo-T00B?
-            // Collect the nav links, forms, and other content for toggling
-            #bs-example-navbar-collapse-1.collapse.navbar-collapse
-              ul.nav.navbar-nav
-                li.active
-                  a(href='/submit')
-                    | Submit a Video
-                    span.sr-only (current)
-                li
-                  a(href='/viewsub') View Submissions
-                li
-                  a(href='/winner') See the Winner
-    h1 #{title}
+      h1 #{title}
+      .container-fluid
+        // Brand and toggle get grouped for better mobile display
+        .navbar-header
+          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#bs-example-navbar-collapse-1')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') Yoo-T00B?
+        // Collect the nav links, forms, and other content for toggling
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          ul.nav.navbar-nav
+            li.active
+              a(href='/submit')
+                | Submit a Video
+                span.sr-only (current)
+            li
+              a(href='/viewsub') View Submissions
+            li
+              a(href='/winner') See the Winner
     p Welcome, #{title}
-      div.row
-          form(name="submitVideo", method="post", action="/formsubmit")
-              div.col-sm-4
-                  input(type="text", name="subName", placeholder="Enter your full name")
-              div.col-sm-4    
-                  input(type="url", name="youtubeVideo", placeholder="Paste the video url here")
-              div.col-sm-4
-                  input(type="text", name="title", placeholder="Enter the title of the video")
-              div.col-sm-8
-                  textarea(name="describe", placeholder="Enter a brief description of your video")
-              div.col-sm-4
-                  input(type="submit", value="Submit", id="submitted")
+      .container
+        form(class="form-horizontal", name="submitVideo", method="post", action="/formsubmit")
+          div.form-group
+                label(for="subName", class="control-label") Your Name
+                input(type="text", class="form-control", name="subName", placeholder="Enter your full name")
+          div.form-group
+                label(for="youtubeVideo", class="control-label") Video Link
+                input(type="url", class="form-control", name="youtubeVideo", placeholder="Paste the video url here")
+          div.form-group
+                label(for="title", class="control-label") Title
+                input(type="text", class="form-control", name="title", placeholder="Enter the title of the video")
+          div.form-group
+                label(for="describe", class="control-label") Describe
+                textarea(name="describe", class="form-control", placeholder="Enter a brief description of your video", rows="3")
+          div.form-group
+                input(type="submit", class="btn btn-default", value="Submit", id="submitted")
