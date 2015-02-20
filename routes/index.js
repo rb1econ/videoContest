@@ -40,7 +40,16 @@ router.get('/vote/:videoName', function(req, res){
 });
 
 router.get('/final', function(req, res){
-    
+
+    for (var i = 0; i < subArray.length; i+2) {
+        (subArray[i].vote>subArray[i+1].vote)? subArray.splice(i+1,1): subArray.splice(i,1);
+    };
+
+    // (subArray[0].vote>subArray[1].vote)? subArray.splice(1,1): subArray.splice(0,1);
+    // (subArray[2].vote>subArray[3].vote)? subArray.splice(3,1): subArray.splice(2,1);
+    // (subArray[4].vote>subArray[5].vote)? subArray.splice(5,1): subArray.splice(4,1);
+    // (subArray[6].vote>subArray[7].vote)? subArray.splice(7,1): subArray.splice(6,1);
+    res.redirect('/viewsub');
 });
 
 router.get('/viewsub', function(req, res){
@@ -48,7 +57,7 @@ router.get('/viewsub', function(req, res){
 });
 
 router.get('/winner', function(req, res){
-	res.render('winner', {title: 'Winner'});
+	res.render('winner', {title: 'Winner', aSubmission: subArray});
 });
 
 router.get('/thanks', function(reg, res){

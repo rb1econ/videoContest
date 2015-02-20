@@ -3,4 +3,19 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
+  //- -console.log(aSubmission);
+  -if(aSubmission.length===1){
+      div.row
+          -var val = aSubmission[0];
+            div.col-sm-6
+              -var embedable = val.youtubeVideo.replace('watch?v=', 'embed/')
+              iframe(src=embedable, frameborder="0", allowfullscreen='')
+              ul
+                li Creator: <strong>#{val.subName}</strong>
+                li Title: <em>#{val.title}</em>
+                li Description: #{val.describe}
+                li Winning number of votes: #{val.vote} 
+  -}else{
+        p There is no winner just yet, check back soon!
+  -}
   
