@@ -3,15 +3,16 @@ extends layout
 block content
   h1= title
   p Welcome, #{title}
-  div.submitVid
-    form(name="submitVideo", method="post", action="/formsubmit")
-        p
-            input(type="text", name="subName", placeholder="Enter your full name")
-        p    
-            input(type="url", name="youtubeVideo", placeholder="Paste the video url here")
-        p
-            input(type="type", name="title", placeholder="Enter the title of the video")
-        p
-            textarea(rows="4", cols="50", name="describe", placeholder="Enter a brief description of your video")
-        p
-            input(type="submit", value="Submit", id="submitted")
+  div.container
+    div.row
+        form(name="submitVideo", method="post", action="/formsubmit")
+            div.col-sm-4
+                input(type="text", name="subName", placeholder="Enter your full name")
+            div.col-sm-4    
+                input(type="url", name="youtubeVideo", placeholder="Paste the video url here")
+            div.col-sm-4
+                input(type="text", name="title", placeholder="Enter the title of the video")
+            div.col-sm-8
+                textarea(name="describe", placeholder="Enter a brief description of your video")
+            div.col-sm-4
+                input(type="submit", value="Submit", id="submitted")

@@ -1,8 +1,14 @@
 var express = require('express');
 var router = express.Router();
+var fs = require('fs');
 
 
-var currentSub = {};
+var getByName = function(name){
+    return _.find(subArray, function(item){
+        return obj === item.name;
+    });
+};
+
 var subArray = [];
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -10,7 +16,18 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/submit', function(req, res){
-	res.render('submit', {title: 'Submit an Entry'});
+    if(subArray.length>=8){
+        res.render('sorry', {title: 'Sorry'});
+    }
+    else{
+	   res.render('submit', {title: 'Submit an Entry'});
+    }
+});
+
+router.get('/vote/:videoName', function(req, res, data){
+    var video = data.getByName(req.params.videoName);
+    video.votes++;
+    res.redirect('/viewsub');
 });
 
 router.get('/viewsub', function(req, res){
@@ -26,12 +43,19 @@ router.get('/thanks', function(reg, res){
 });
 
 router.post('/formsubmit', function(req, res){
+    var currentSub = {};
     currentSub.subName = req.body.subName;
     currentSub.youtubeVideo = req.body.youtubeVideo;
     currentSub.title = req.body.title;
     currentSub.describe = req.body.describe;
+    currentSub.vote = 0;
+    // fs.appendFile('subFile.txt', JSON.stringify(currentSub)+',\n', function(err){
+    //     if(err) throw err;
+    //     console.log('It\'s Saved!!')
+    // });
+
     subArray.push(currentSub);
-    console.log(subArray);
+    // console.log(subArray);
     // console.log('CONSOLE DOT LOG OF CURRENTSUB OBJ: ',currentSub);
     res.redirect('/thanks');
 });
