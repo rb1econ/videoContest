@@ -15,6 +15,12 @@ block content
                 li Description: #{val.describe}
                 li 
                   a(href="/vote/#{val.subName}") Click to Vote
+                li Current votes: #{val.vote}
+      div.row
+        div.col-sm-3
+        div.col-sm-6
+          a(href="/final", id="finalize") Click to Finalize Round and Eliminate Losers
+        div.col-sm-3
 
   //- script(type="text/javascript").
   //-   var subArray = !{JSON.stringify(aSubmission)}

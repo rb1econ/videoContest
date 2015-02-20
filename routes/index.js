@@ -1,13 +1,20 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var _ = require('underscore');
 
 
-var getByName = function(name){
+var getByName = function(aName){
     return _.find(subArray, function(item){
-        return obj === item.name;
+        return aName === item.subName;
     });
 };
+
+// var getByName = function(aName){
+//     subArray.filter(function(item){
+//         if(item.sub)
+//     });
+// };
 
 var subArray = [];
 /* GET home page. */
@@ -24,10 +31,16 @@ router.get('/submit', function(req, res){
     }
 });
 
-router.get('/vote/:videoName', function(req, res, data){
-    var video = data.getByName(req.params.videoName);
-    video.votes++;
+router.get('/vote/:videoName', function(req, res){
+    var video = getByName(req.params.videoName);
+    console.log('THIS IS A CONSOLE DOT LOG OF video: ', video);
+    video.vote++;
+    // console.log('THIS IS A CONSOLE DOT LOG: ', req.params.videoName);
     res.redirect('/viewsub');
+});
+
+router.get('/final', function(req, res){
+    
 });
 
 router.get('/viewsub', function(req, res){
@@ -49,6 +62,12 @@ router.post('/formsubmit', function(req, res){
     currentSub.title = req.body.title;
     currentSub.describe = req.body.describe;
     currentSub.vote = 0;
+    // currentSub.getByName = function(name){
+    //     return _.find(subArray, function(item){
+    //         return name === item.name;
+    //     });
+    // };
+
     // fs.appendFile('subFile.txt', JSON.stringify(currentSub)+',\n', function(err){
     //     if(err) throw err;
     //     console.log('It\'s Saved!!')
