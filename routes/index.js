@@ -16,7 +16,64 @@ var getByName = function(aName){
 //     });
 // };
 
-var subArray = [];
+var subArray = [
+    {
+        subName: 'Ryan',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 4
+    },
+    {
+        subName: 'Matt',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 2
+    },
+    {
+        subName: 'Jack',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 6
+    },
+    {
+        subName: 'Michelle',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 1
+    },
+    {
+        subName: 'Lauren',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 2
+    },
+    {
+        subName: 'Amy',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 5
+    },
+    {
+        subName: 'Charlotto',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 2
+    },
+    {
+        subName: 'Jameson',
+        youtubeVideo: 'https://www.youtube.com/watch?v=MC6aAs4kkbY',
+        title: 'Black Moth on a Super Rainbow',
+        describe: "great vid, much rainbow",
+        vote: 3
+    }
+];
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Home' });
@@ -40,11 +97,19 @@ router.get('/vote/:videoName', function(req, res){
 });
 
 router.get('/final', function(req, res){
+    var length = subArray.length;
 
-    for (var i = 0; i < subArray.length; i+2) {
-        (subArray[i].vote>subArray[i+1].vote)? subArray.splice(i+1,1): subArray.splice(i,1);
-    };
-
+    for (var i = 0; i<subArray.length; i++) {
+        if(subArray[i].vote<subArray[i+1].vote){
+            subArray.splice(i,1);
+        } 
+        else{
+            subArray.splice(i+1,1);
+        }
+    }
+    if(subArray.length===1){
+        res.redirect('winner');
+    }
     // (subArray[0].vote>subArray[1].vote)? subArray.splice(1,1): subArray.splice(0,1);
     // (subArray[2].vote>subArray[3].vote)? subArray.splice(3,1): subArray.splice(2,1);
     // (subArray[4].vote>subArray[5].vote)? subArray.splice(5,1): subArray.splice(4,1);
